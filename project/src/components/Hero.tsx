@@ -10,10 +10,10 @@ const Hero: React.FC = () => {
   });
 
   const finalStats = {
-    experience: 8,
-    certifications: 12,
-    technologies: 25,
-    projects: 50
+    experience: 14,
+    certifications: 8,
+    technologies: 16,
+    projects: 25
   };
 
   useEffect(() => {
