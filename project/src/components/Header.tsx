@@ -18,6 +18,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
     { id: 'tutorials', label: 'Tutorials' },
+    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -45,13 +46,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <nav className="flex space-x-8">
-            {isHomePage ? (
+{isHomePage ? (
               // Home page navigation
               navItems.map((item) => (
-                item.id === 'tutorials' ? (
+                item.id === 'blog' ? (
                   <Link
                     key={item.id}
-                    to="/tutorials"
+                    to="/blog"
                     className="text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
                   >
                     <span>{item.label}</span>
@@ -70,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                 )
               ))
             ) : (
-              // Tutorials page navigation
+              // Other pages navigation
               <Link
                 to="/"
                 className="text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
@@ -115,12 +116,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300">
             <nav className="px-4 py-4 space-y-2">
-              {isHomePage ? (
+{isHomePage ? (
                 navItems.map((item) => (
-                  item.id === 'tutorials' ? (
+                  item.id === 'blog' ? (
                     <Link
                       key={item.id}
-                      to="/tutorials"
+                      to="/blog"
                       className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
                       onClick={() => setIsMenuOpen(false)}
                     >

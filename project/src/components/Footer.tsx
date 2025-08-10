@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, Code } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -45,19 +46,37 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <div className="space-y-2">
-              {['Home', 'Projects', 'Tutorials', 'Contact'].map((link) => (
-                <button
-                  key={link}
-                  onClick={() => {
-                    const element = document.getElementById(link.toLowerCase());
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="block text-gray-400 dark:text-gray-500 hover:text-white transition-colors"
-                >
-                  {link}
-                </button>
+              {['Home', 'Projects', 'Tutorials', 'Blog', 'Contact'].map((link) => (
+                link === 'Tutorials' ? (
+                  <Link
+                    key={link}
+                    to="/tutorials"
+                    className="block text-gray-400 dark:text-gray-500 hover:text-white transition-colors"
+                  >
+                    {link}
+                  </Link>
+                ) : link === 'Blog' ? (
+                  <Link
+                    key={link}
+                    to="/blog"
+                    className="block text-gray-400 dark:text-gray-500 hover:text-white transition-colors"
+                  >
+                    {link}
+                  </Link>
+                ) : (
+                  <button
+                    key={link}
+                    onClick={() => {
+                      const element = document.getElementById(link.toLowerCase());
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="block text-gray-400 dark:text-gray-500 hover:text-white transition-colors"
+                  >
+                    {link}
+                  </button>
+                )
               ))}
             </div>
           </div>

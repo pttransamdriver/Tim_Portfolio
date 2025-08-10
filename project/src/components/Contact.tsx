@@ -39,14 +39,21 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
+            <div className="text-center mb-8">
+              <img 
+                src="/media/handshake.png" 
+                alt="Professional handshake" 
+                className="w-84 h-48 mx-auto rounded-xl shadow-lg object-cover mb-6"
+              />
+            </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
                 Get In Touch
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed transition-colors duration-300">
-                I'm currently available for new opportunities and exciting projects.
+                I'm frequently busy with new projects, streamlining and innovating comprehensive solutions.
                 Whether you need blockchain development, network security consulting,
-                or Linux system architecture, let's discuss how we can work together.
+                or Linux system architecture, let's discuss how we can innovate together!
               </p>
             </div>
 

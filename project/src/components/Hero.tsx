@@ -74,7 +74,11 @@ const Hero: React.FC = () => {
               <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-400 via-purple-500 to-green-400 p-1 profile-picture-glow">
                 {/* Replace the div below with <img src="/path/to/your/profile.jpg" alt="Tim Illguth" className="w-full h-full rounded-full object-cover" /> */}
                 <div className="w-full h-full rounded-full bg-gray-800 dark:bg-gray-800 flex items-center justify-center text-white text-4xl sm:text-5xl lg:text-6xl font-bold">
-                  TI
+                  <img 
+                   src="/media/Speaker_Tim.png" 
+                   alt="Tim Illguth" 
+                   className="w-full h-full rounded-full object-cover"
+                   />
                 </div>
               </div>
               {/* Floating particles around profile */}
@@ -88,7 +92,7 @@ const Hero: React.FC = () => {
             Tim Illguth
           </h1>
           <p className="text-xl sm:text-2xl lg:text-3xl text-blue-600 dark:text-blue-200 mb-4 drop-shadow-md transition-colors duration-300">
-            Fullstack Blockchain Developer & Network Engineer
+            Systems Engineer, Fullstack Blockchain Developer and Network Security Specialist
           </p>
           <p className="text-lg sm:text-xl text-gray-700 dark:text-blue-100 mb-12 max-w-3xl mx-auto drop-shadow-sm transition-colors duration-300">
             Certified Blockchain Developer | Linux Engineer | Network Security Specialist
