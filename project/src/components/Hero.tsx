@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
     experience: 14,
     certifications: 8,
     technologies: 16,
-    projects: 25
+    projects: 40
   };
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             Tim Illguth
           </h1>
           <p className="text-xl sm:text-2xl lg:text-3xl text-blue-600 dark:text-blue-200 mb-4 drop-shadow-md transition-colors duration-300">
-            Systems Engineer, Fullstack Blockchain Developer and Network Security Specialist
+            Systems Engineer * Fullstack Blockchain Developer * and Network Security Specialist
           </p>
           <p className="text-lg sm:text-xl text-gray-700 dark:text-blue-100 mb-12 max-w-3xl mx-auto drop-shadow-sm transition-colors duration-300">
             Certified Blockchain Developer | Linux Engineer | Network Security Specialist

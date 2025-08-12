@@ -6,34 +6,34 @@ const Projects: React.FC = () => {
     {
       title: 'NFT Patents Project',
       description: 'A comprehensive blockchain solution for patent management using NFTs. Built with Solidity smart contracts, React frontend, and IPFS for decentralized storage.',
-      image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Solidity', 'React', 'IPFS', 'Web3.js', 'Hardhat'],
-      github: 'https://github.com/timillguth/nft-patents',
+      image: '/media/NFT_Patents.png',
+      technologies: ['Solidity', 'React', 'IPFS', 'Web3.js', 'Hardhat', 'Tailwind.css', 'TypeScript', 'Vite', 'USPTO API', 'AI Integration'],
+      github: 'https://github.com/pttransamdriver/NFT_Patents',
       demo: '#',
       featured: true
     },
     {
       title: 'Uniswap Clone Project',
       description: 'Full-featured DEX implementation with automated market maker functionality. Includes liquidity pools, token swapping, and yield farming capabilities.',
-      image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Solidity', 'React', 'Ethers.js', 'TypeScript', 'Tailwind CSS'],
-      github: 'https://github.com/timillguth/uniswap-clone',
+      image: '/media/uniswap.png',
+      technologies: ['Solidity', 'React', 'Ethers.js', 'TypeScript', 'Tailwind.css', 'Hardhat'],
+      github: 'https://github.com/pttransamdriver/amm_project',
       demo: '#',
       featured: true
     },
     {
-      title: 'Network Security Dashboard',
-      description: 'Enterprise-grade network monitoring solution with real-time threat detection and automated response capabilities.',
-      image: 'https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['Python', 'Django', 'PostgreSQL', 'Redis', 'Docker'],
+      title: 'NASA Network Security Upgrade',
+      description: 'While working as a NASA Contractor at ASF for 12 years I implemented two new netwok upgrades with firewalls, VPN and setup a ZTNA solution.',
+      image: '/media/NASA_Logo.png',
+      technologies: ['ZTNA', 'Juniper', 'Fortinet', 'Kubernetes', 'Docker', 'Linux'],
       github: 'https://github.com/timillguth/security-dashboard',
       demo: '#',
       featured: false
     },
     {
-      title: 'Linux System Optimizer',
+      title: 'Linux Systems Manager',
       description: 'Automated system optimization tool for Linux servers with performance monitoring and resource management.',
-      image: 'https://images.pexels.com/photos/2004161/pexels-photo-2004161.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/media/Clouds.png',
       technologies: ['Bash', 'Python', 'SystemD', 'Prometheus', 'Grafana'],
       github: 'https://github.com/timillguth/linux-optimizer',
       demo: '#',
@@ -54,7 +54,7 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={project.title}
               className={`group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-500 overflow-hidden hover:scale-105 ${
@@ -89,24 +89,26 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
                 
-                <div className="flex space-x-4">
-                  <a
-                    href={project.github}
-                    className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github size={20} />
-                    <span className="font-medium">Code</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                    <span className="font-medium">Demo</span>
-                  </a>
-                </div>
+                {(project.title === 'NFT Patents Project' || project.title === 'Uniswap Clone Project') && (
+                  <div className="flex space-x-4">
+                    <a
+                      href={project.github}
+                      className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github size={20} />
+                      <span className="font-medium">Code</span>
+                    </a>
+                    <a
+                      href={project.demo}
+                      className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      <ExternalLink size={20} />
+                      <span className="font-medium">Demo</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}

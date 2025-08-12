@@ -424,5 +424,26 @@ Blockchain development requires a unique mindset that prioritizes security, effi
 
 Remember: in blockchain development, the cost of mistakes is high, but the potential for positive impact is even higher.
     `
+  },
+  {
+    id: '4',
+    title: 'Your New Blog Post Title',
+    slug: 'your-new-blog-post-title',
+    excerpt: 'Brief description of your new article.',
+    author: 'Tim Illguth',
+    publishDate: '2024-12-20',
+    readTime: 5,
+    tags: ['New Tag', 'Another Tag'],
+    featured: false,
+    image: 'https://images.pexels.com/photos/IMAGE_ID/pexels-photo-IMAGE_ID.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+# Your New Blog Post Title
+
+Your content here in Markdown format.
+
+## Subheading
+
+More content...
+    `
   }
 ];
