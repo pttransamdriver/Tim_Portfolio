@@ -5,6 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import Blog from './components/Blog';
 import Tutorials from './components/Tutorials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -17,7 +18,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'projects', 'tutorials', 'contact'];
+      const sections = ['home', 'projects', 'blog', 'tutorials', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach(section => {
@@ -41,6 +42,7 @@ function App() {
       <main>
         <Hero />
         <Projects />
+        <Blog />
         <Tutorials />
         <Contact />
       </main>
@@ -56,9 +58,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/tutorials" element={<TutorialsPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/vibe-coding-vs-knowledgeable-developers-the-ai-productivity-divide" element={<BlogPost />} />
-          <Route path="/thoughts-on-thread-safe-blockchain-development" element={<BlogPost />} />
-          <Route path="/blockchain-development-principles" element={<BlogPost />} />
           <Route path="/:slug" element={<BlogPost />} />
         </Routes>
         </Router>

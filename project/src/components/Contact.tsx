@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
               </a>
 
               <a
-                href="https://linkedin.com/in/timillguth"
+                href="https://www.linkedin.com/in/tim-illguth-31814b67/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg dark:shadow-gray-900/50 transition-all duration-300 hover:scale-105"
@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
               </a>
 
               <a
-                href="https://github.com/timillguth"
+                href="https://github.com/pttransamdriver"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg dark:shadow-gray-900/50 transition-all duration-300 hover:scale-105"

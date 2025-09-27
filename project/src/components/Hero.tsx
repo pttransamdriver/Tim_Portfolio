@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:bg-gradient-to-b dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-all duration-500">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:bg-gradient-to-b dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-all duration-500 pt-20 sm:pt-16">
       {/* Northern Lights Background - Only visible in dark mode */}
       <div className="northern-lights dark:opacity-100 opacity-0 transition-opacity duration-500">
         <div className="stars"></div>
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             Tim Illguth
           </h1>
           <p className="text-xl sm:text-2xl lg:text-3xl text-blue-600 dark:text-blue-200 mb-4 drop-shadow-md transition-colors duration-300">
-            Systems Engineer * Fullstack Blockchain Developer * and Network Security Specialist
+            Systems Engineer | Fullstack Blockchain Developer | and Network Security Specialist
           </p>
           <p className="text-lg sm:text-xl text-gray-700 dark:text-blue-100 mb-12 max-w-3xl mx-auto drop-shadow-sm transition-colors duration-300">
             Certified Blockchain Developer | Linux Engineer | Network Security Specialist

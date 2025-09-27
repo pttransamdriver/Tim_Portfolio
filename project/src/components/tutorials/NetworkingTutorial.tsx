@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Router, Shield, Zap, Info } from 'lucide-react';
+import { Mail, MapPin, Router, Shield, Navigation, Info } from 'lucide-react';
 
 interface NetworkingConcept {
   id: string;
@@ -22,8 +22,8 @@ const NetworkingTutorial: React.FC = () => {
       title: 'IP Address',
       analogy: 'Like a house address (123 Main St, Springfield, IL 62701) - it tells exactly where to deliver the mail.',
       technical: 'A unique numerical identifier assigned to each device on a network, consisting of network and host portions.',
-      example: '192.168.1.100 (Private) or 203.0.113.45 (Public)',
-      position: { x: 20, y: 20 },
+      example: 'user@mx480> show interfaces ge-0/0/1 | match "Logical interface"\nLogical interface ge-0/0/1.0 (Index 333) (SNMP ifIndex 606)\n    Flags: Up SNMP-Traps 0x4004000 Encapsulation: ENET2 Traffic-Statistics\n    Input  packets :                123456\n    Output packets :                789012\n    Protocol inet, MTU: 1500\n    Addresses, Flags: Is-Preferred Is-Primary\n      Destination: 192.168.1/24, Local: 192.168.1.1, Broadcast: 192.168.1.255',
+      position: { x: 40, y: 60 },
       icon: MapPin,
       color: 'bg-blue-500'
     },
@@ -32,9 +32,9 @@ const NetworkingTutorial: React.FC = () => {
       title: 'Subnet Mask',
       analogy: 'Like the ZIP code system - it groups addresses into neighborhoods (subnets) for efficient mail sorting.',
       technical: 'Determines which portion of an IP address represents the network and which represents the host.',
-      example: '255.255.255.0 (/24) - First 3 octets are network, last is host',
-      position: { x: 60, y: 20 },
-      icon: Mail,
+      example: 'user@mx480> show route table inet.0\n\ninet.0: 742108 destinations, 1484216 routes (742108 active, 0 holddown, 0 hidden)\n+ = Active Route, - = Last Active, * = Both\n\n0.0.0.0/0          *[BGP/170] 2d 14:23:45, localpref 100\n                      AS path: 174 I, validation-state: unverified\n                    >  to 10.1.1.1 via ge-0/0/0.0\n192.168.1.0/24     *[Direct/0] 5d 08:15:23\n                    >  via ge-0/0/1.0',
+      position: { x: 61, y: 60 },
+      icon: Navigation,
       color: 'bg-green-500'
     },
     {
@@ -42,8 +42,8 @@ const NetworkingTutorial: React.FC = () => {
       title: 'Default Gateway',
       analogy: 'Like the local post office - when mail needs to go outside your neighborhood, it goes here first.',
       technical: 'The router that connects your local network to other networks, typically the internet.',
-      example: '192.168.1.1 - Router that forwards traffic to external networks',
-      position: { x: 40, y: 50 },
+      example: 'user@mx480> show bgp summary\nGroups: 3 Peers: 8 Down peers: 0\nTable          Tot Paths  Act Paths Suppressed    History Damp State    Pending\ninet.0           742108     742108          0          0          0          0\nPeer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn State|#Active/Received/Accepted/Damped...\n10.1.1.1               174     156234     123456       0       2     2d 14:23:45 Establ\n  inet.0: 742108/742108/742108/0',
+      position: { x: 50.2, y: 60 },
       icon: Router,
       color: 'bg-purple-500'
     },
@@ -52,9 +52,9 @@ const NetworkingTutorial: React.FC = () => {
       title: 'DNS Server',
       analogy: 'Like a phone book - you give it a name (google.com) and it tells you the address (172.217.164.110).',
       technical: 'Translates human-readable domain names into IP addresses that computers can understand.',
-      example: 'google.com → 172.217.164.110',
-      position: { x: 80, y: 50 },
-      icon: Zap,
+      example: 'user@mx480> show system services dns\nDNS configuration:\n    Forwarders: 8.8.8.8, 8.8.4.4\n    Maximum concurrent requests: 1000\n    Query source address: 10.1.1.100\n\nuser@mx480> show host google.com\nHost google.com:\n172.217.164.110 has address 172.217.164.110\n172.217.164.110 has address 142.250.185.78',
+      position: { x: 50, y: 13 },
+      icon: Mail,
       color: 'bg-yellow-500'
     },
     {
@@ -62,8 +62,8 @@ const NetworkingTutorial: React.FC = () => {
       title: 'Firewall',
       analogy: 'Like a security guard at a gated community - checks every visitor and decides who can enter.',
       technical: 'Network security system that monitors and controls incoming and outgoing network traffic.',
-      example: 'Block port 23 (Telnet), Allow port 443 (HTTPS)',
-      position: { x: 20, y: 80 },
+      example: 'user@mx480> show firewall filter INGRESS-FILTER\nFilter: INGRESS-FILTER\nTerm                        Type       Name\n10                          inet       ALLOW-BGP\n    From: source-address 10.1.1.0/24;\n    From: protocol tcp;\n    From: port 179;\n    Then: accept;\n20                          inet       DENY-TELNET\n    From: port 23;\n    Then: discard;\n99                          inet       DEFAULT-PERMIT\n    Then: accept;',
+      position: { x: 88, y: 15 },
       icon: Shield,
       color: 'bg-red-500'
     }
@@ -76,11 +76,11 @@ const NetworkingTutorial: React.FC = () => {
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Interactive Networking Tutorial
+          Interactive Juniper JunOS Networking Tutorial
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Learn networking concepts through real-world analogies. Click on the envelope components 
-          to understand how data travels through networks, just like mail through the postal system.
+          Learn networking concepts through real-world analogies and authentic Juniper JunOS commands.
+          Click on the components to see how enterprise network routers manage traffic.
         </p>
       </div>
 
@@ -113,7 +113,7 @@ const NetworkingTutorial: React.FC = () => {
       {/* Interactive Envelope Diagram */}
       <div className="bg-white rounded-xl shadow-lg p-8">
         <h2 className="text-xl font-semibold text-gray-900 mb-6 text-center">
-          {showAnalogy ? '📮 Mail Delivery System' : '🌐 Network Architecture'}
+          {showAnalogy ? '📮 Mail Delivery System' : '🌐 JunOS Network Architecture'}
         </h2>
         
         <div className="relative h-96 bg-gradient-to-br from-blue-50 to-green-50 rounded-lg overflow-hidden border-2 border-dashed border-gray-300">
@@ -161,34 +161,10 @@ const NetworkingTutorial: React.FC = () => {
             </button>
           ))}
 
-          {/* Connection lines */}
-          <svg className="absolute inset-0 pointer-events-none">
-            <defs>
-              <marker id="arrowhead-net" markerWidth="10" markerHeight="7" 
-                      refX="9" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280" />
-              </marker>
-            </defs>
-            
-            {/* IP to Subnet */}
-            <line x1="20%" y1="20%" x2="60%" y2="20%" 
-                  stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" />
-            
-            {/* Gateway connections */}
-            <line x1="40%" y1="50%" x2="20%" y2="20%" 
-                  stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" />
-            <line x1="40%" y1="50%" x2="80%" y2="50%" 
-                  stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" />
-            
-            {/* Firewall to Gateway */}
-            <line x1="20%" y1="80%" x2="40%" y2="50%" 
-                  stroke="#6B7280" strokeWidth="2" strokeDasharray="5,5" />
-          </svg>
-
           {/* Instructions */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 text-sm text-gray-600 bg-white px-3 py-1 rounded-full shadow-sm">
             <Info size={14} />
-            <span>Click on any component to learn more</span>
+            <span>Click on any component to see JunOS commands</span>
           </div>
         </div>
       </div>
@@ -228,12 +204,18 @@ const NetworkingTutorial: React.FC = () => {
             
             <div>
               <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                💡 Example
+                💻 Juniper JunOS Command
               </h4>
-              <div className="bg-gray-50 rounded-lg p-3">
-                <code className="text-sm text-gray-800">
+              <div className="bg-gray-900 rounded-lg p-4 shadow-inner">
+                <div className="bg-gray-800 px-3 py-1 rounded-t flex items-center space-x-2 mb-2">
+                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-green-400 text-xs ml-2">Juniper MX480 Router Console</span>
+                </div>
+                <pre className="text-green-400 font-mono text-sm whitespace-pre-wrap leading-relaxed">
                   {selectedConceptData.example}
-                </code>
+                </pre>
               </div>
             </div>
           </div>

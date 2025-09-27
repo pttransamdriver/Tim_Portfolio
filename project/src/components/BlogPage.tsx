@@ -10,12 +10,13 @@ const BlogPage: React.FC = () => {
   // Get all unique tags
   const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
 
-  // Filter posts based on search and tag
+  // Filter posts based on search and tag (exclude drafts)
   const filteredPosts = blogPosts.filter(post => {
+    const isPublished = !post.draft; // Exclude draft posts
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTag = !selectedTag || post.tags.includes(selectedTag);
-    return matchesSearch && matchesTag;
+    return isPublished && matchesSearch && matchesTag;
   });
 
   const formatDate = (dateString: string) => {

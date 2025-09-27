@@ -8,13 +8,13 @@ const Footer: React.FC = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/timillguth',
+      url: 'https://github.com/pttransamdriver',
       icon: Github,
       color: 'hover:text-gray-900'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/timillguth',
+      url: 'https://www.linkedin.com/in/tim-illguth-31814b67/',
       icon: Linkedin,
       color: 'hover:text-blue-600'
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Youtube } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [
@@ -10,6 +10,7 @@ const Projects: React.FC = () => {
       technologies: ['Solidity', 'React', 'IPFS', 'Web3.js', 'Hardhat', 'Tailwind.css', 'TypeScript', 'Vite', 'USPTO API', 'AI Integration'],
       github: 'https://github.com/pttransamdriver/NFT_Patents',
       demo: '#',
+      youtube: 'https://www.youtube.com/watch?v=GnNT8CYDEFA',
       featured: true
     },
     {
@@ -26,7 +27,6 @@ const Projects: React.FC = () => {
       description: 'While working as a NASA Contractor at ASF for 12 years I implemented two new netwok upgrades with firewalls, VPN and setup a ZTNA solution.',
       image: '/media/NASA_Logo.png',
       technologies: ['ZTNA', 'Juniper', 'Fortinet', 'Kubernetes', 'Docker', 'Linux'],
-      github: 'https://github.com/timillguth/security-dashboard',
       demo: '#',
       featured: false
     },
@@ -35,7 +35,6 @@ const Projects: React.FC = () => {
       description: 'Automated system optimization tool for Linux servers with performance monitoring and resource management.',
       image: '/media/Clouds.png',
       technologies: ['Bash', 'Python', 'SystemD', 'Prometheus', 'Grafana'],
-      github: 'https://github.com/timillguth/linux-optimizer',
       demo: '#',
       featured: false
     }
@@ -107,6 +106,17 @@ const Projects: React.FC = () => {
                       <ExternalLink size={20} />
                       <span className="font-medium">Demo</span>
                     </a>
+                    {project.youtube && (
+                      <a
+                        href={project.youtube}
+                        className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Youtube size={20} />
+                        <span className="font-medium">Tutorial</span>
+                      </a>
+                    )}
                   </div>
                 )}
               </div>
@@ -117,7 +127,7 @@ const Projects: React.FC = () => {
         {/* GitHub Profile Link */}
         <div className="text-center">
           <a
-            href="https://github.com/timillguth"
+            href="https://github.com/pttransamdriver"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-gray-900 dark:bg-gray-600 hover:bg-gray-800 dark:hover:bg-gray-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"

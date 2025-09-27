@@ -17,8 +17,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
-    { id: 'tutorials', label: 'Tutorials' },
     { id: 'blog', label: 'Blog' },
+    { id: 'tutorials', label: 'Tutorials' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -48,17 +48,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
             <nav className="flex space-x-8">
 {isHomePage ? (
               // Home page navigation
-              navItems.map((item) => (
-                item.id === 'blog' ? (
-                  <Link
-                    key={item.id}
-                    to="/blog"
-                    className="text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
-                  >
-                    <span>{item.label}</span>
-                    <ExternalLink size={14} />
-                  </Link>
-                ) : (
+              <>
+                {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
@@ -68,8 +59,17 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                   >
                     {item.label}
                   </button>
-                )
-              ))
+                ))}
+                <a
+                  href="https://www.youtube.com/@TimsTutorials"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
+                >
+                  <span>YouTube</span>
+                  <ExternalLink size={14} />
+                </a>
+              </>
             ) : (
               // Other pages navigation
               <Link
@@ -117,18 +117,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-300">
             <nav className="px-4 py-4 space-y-2">
 {isHomePage ? (
-                navItems.map((item) => (
-                  item.id === 'blog' ? (
-                    <Link
-                      key={item.id}
-                      to="/blog"
-                      className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <span>{item.label}</span>
-                      <ExternalLink size={14} />
-                    </Link>
-                  ) : (
+                <>
+                  {navItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
@@ -138,8 +128,18 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                     >
                       {item.label}
                     </button>
-                  )
-                ))
+                  ))}
+                  <a
+                    href="https://www.youtube.com/@TimsTutorials"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 flex items-center space-x-1"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span>YouTube</span>
+                    <ExternalLink size={14} />
+                  </a>
+                </>
               ) : (
                 <Link
                   to="/"

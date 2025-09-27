@@ -4,8 +4,9 @@ import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 
 const Blog: React.FC = () => {
-  // Get the 3 most recent posts
+  // Get the 3 most recent published posts (exclude drafts)
   const recentPosts = blogPosts
+    .filter(post => !post.draft) // Filter out draft posts
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .slice(0, 3);
 

@@ -239,25 +239,28 @@ const BlockchainTutorial: React.FC = () => {
           ))}
 
           {/* Connection lines */}
-          <svg className="absolute inset-0 pointer-events-none">
+          <svg className="absolute inset-0 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
-              <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-                      refX="9" refY="3.5" orient="auto">
+              <marker id="arrowhead" markerWidth="10" markerHeight="7"
+                      refX="9" refY="3.5" orient="auto" markerUnits="strokeWidth">
                 <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280" />
               </marker>
             </defs>
-            
+
             {/* Pool to Swap */}
-            <line x1="50%" y1="30%" x2="20%" y2="60%" 
-                  stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-            
+            <line x1="50" y1="15" x2="28" y2="20"
+                  stroke="#6B7280" strokeWidth="0.2" markerEnd="url(#arrowhead)"
+                  strokeDasharray="1,0" opacity="0.7" />
+
             {/* Pool to LP */}
-            <line x1="50%" y1="30%" x2="80%" y2="60%" 
-                  stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-            
+            <line x1="50" y1="15" x2="72" y2="20"
+                  stroke="#6B7280" strokeWidth="0.2" markerEnd="url(#arrowhead)"
+                  strokeDasharray="1,0" opacity="0.7" />
+
             {/* Pool to Oracle */}
-            <line x1="50%" y1="30%" x2="50%" y2="85%" 
-                  stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+            <line x1="50" y1="15" x2="50" y2="27"
+                  stroke="#6B7280" strokeWidth="0.2" markerEnd="url(#arrowhead)"
+                  strokeDasharray="1,0" opacity="0.7" />
           </svg>
         </div>
 
