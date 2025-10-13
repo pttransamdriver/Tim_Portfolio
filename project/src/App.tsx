@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
@@ -12,6 +12,17 @@ import Footer from './components/Footer';
 import TutorialsPage from './components/TutorialsPage';
 import BlogPage from './components/BlogPage';
 import BlogPost from './components/BlogPost';
+
+// Scroll to top component
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -54,12 +65,13 @@ function App() {
     <HelmetProvider>
       <ThemeProvider>
         <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/tutorials" element={<TutorialsPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/:slug" element={<BlogPost />} />
-        </Routes>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/tutorials" element={<TutorialsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/:slug" element={<BlogPost />} />
+          </Routes>
         </Router>
       </ThemeProvider>
     </HelmetProvider>
