@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -9,9 +9,11 @@ import Blog from './components/Blog';
 import Tutorials from './components/Tutorials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import TutorialsPage from './components/TutorialsPage';
-import BlogPage from './components/BlogPage';
-import BlogPost from './components/BlogPost';
+
+// Lazy load heavy components
+const TutorialsPage = lazy(() => import('./components/TutorialsPage'));
+const BlogPage = lazy(() => import('./components/BlogPage'));
+const BlogPost = lazy(() => import('./components/BlogPost'));
 
 // Scroll to top component
 function ScrollToTop() {
@@ -61,17 +63,25 @@ function App() {
     </div>
   );
 
+  const LoadingFallback = () => (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="text-gray-600 dark:text-gray-400">Loading...</div>
+    </div>
+  );
+
   return (
     <HelmetProvider>
       <ThemeProvider>
         <Router>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/tutorials" element={<TutorialsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/:slug" element={<BlogPost />} />
-          </Routes>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/tutorials" element={<TutorialsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/:slug" element={<BlogPost />} />
+            </Routes>
+          </Suspense>
         </Router>
       </ThemeProvider>
     </HelmetProvider>

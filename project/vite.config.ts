@@ -7,4 +7,20 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  publicDir: 'public',
+  assetsInclude: ['**/*.md'],
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          // Keep markdown files in their original structure
+          if (assetInfo.name?.endsWith('.md')) {
+            return 'src/content/blogs/[name][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
+    },
+    copyPublicDir: true,
+  },
 });

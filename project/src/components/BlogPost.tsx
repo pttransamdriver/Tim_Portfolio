@@ -1,18 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
+// Only import languages you actually use
+import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import solidity from 'react-syntax-highlighter/dist/esm/languages/prism/solidity';
+import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import SEO from './SEO';
+
+// Register only the languages you use
+SyntaxHighlighter.registerLanguage('javascript', javascript);
+SyntaxHighlighter.registerLanguage('typescript', typescript);
+SyntaxHighlighter.registerLanguage('solidity', solidity);
+SyntaxHighlighter.registerLanguage('python', python);
+SyntaxHighlighter.registerLanguage('bash', bash);
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find(p => p.slug === slug);
+  const [content, setContent] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (post) {
+      // Load markdown file from public directory
+      fetch(`/content/blogs/${post.contentFile}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to load content');
+          }
+          return response.text();
+        })
+        .then((text) => {
+          setContent(text);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error loading blog content:', error);
+          setContent('# Error Loading Content\n\nSorry, we couldn\'t load this blog post.');
+          setLoading(false);
+        });
+    }
+  }, [post]);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-600 dark:text-gray-400">Loading...</div>
+      </div>
+    );
   }
 
   const formatDate = (dateString: string) => {
@@ -144,7 +189,7 @@ const BlogPost: React.FC = () => {
               },
             }}
           >
-            {post.content}
+            {content}
           </ReactMarkdown>
         </div>
 
