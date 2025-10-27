@@ -78,6 +78,19 @@ export const blogPosts: BlogPost[] = [
     readTime: 14,
     tags: ['Solidity', 'Gas Optimization', 'Smart Contracts', 'Ethereum', 'Best Practices'],
     featured: true,
-    image: '/media/backpack_bitcoin.png',
+    image: '/media/bytestacking.png',
+  },
+  {
+    id: '6',
+    title: 'Getting Started with Agentic Coding: Your First Step into AI-Assisted Development',
+    slug: 'getting-started-with-agentic-coding',
+    excerpt: 'Discover how agentic coding tools like Claude Code, AmazonQ, and Augment Code are transforming software development. Learn which tools to use, when to use them, and how to integrate them into your VS Code workflow for maximum productivity.',
+    contentFile: 'getting-started-with-agentic-coding.md',
+    author: 'Tim Illguth',
+    publishDate: '2025-10-27',
+    readTime: 18,
+    tags: ['AI', 'Agentic Coding', 'VS Code', 'Developer Tools', 'Productivity', 'Claude Code', 'AmazonQ', 'Augment Code'],
+    featured: true,
+    image: 'https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&cs=tinysrgb&w=800',
   }
 ];

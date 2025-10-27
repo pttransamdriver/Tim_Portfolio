@@ -1,19 +1,36 @@
-# Basic MIME types for Hostinger
-AddType application/javascript .js
-AddType text/css .css
-AddType image/png .png
-AddType image/jpeg .jpg .jpeg
+# Force proper MIME types
+<IfModule mod_mime.c>
+  AddType text/html .html .htm
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType image/png .png
+  AddType image/jpeg .jpg .jpeg
+  AddType image/webp .webp
+  AddType text/markdown .md
+  AddType text/csv .csv
+</IfModule>
 
-# Enable rewrite engine
-RewriteEngine On
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-# Don't rewrite files that exist
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule .* - [L]
+  # Serve existing files directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
 
-# Don't rewrite directories that exist
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule .* - [L]
+  # Serve existing directories directly
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-# For everything else, serve index.html
-RewriteRule .* /index.html [L]
+  # Route all other requests to index.html for React Router
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript
+</IfModule>

@@ -8,14 +8,18 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   publicDir: 'public',
-  assetsInclude: ['**/*.md'],
+  assetsInclude: ['**/*.md', '**/*.csv'],
   build: {
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
           // Keep markdown files in their original structure
           if (assetInfo.name?.endsWith('.md')) {
-            return 'src/content/blogs/[name][extname]';
+            return 'content/blogs/[name][extname]';
+          }
+          // Keep CSV files in their original structure
+          if (assetInfo.name?.endsWith('.csv')) {
+            return 'content/data/[name][extname]';
           }
           return 'assets/[name]-[hash][extname]';
         },

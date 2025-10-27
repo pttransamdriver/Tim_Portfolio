@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:bg-gradient-to-b dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-all duration-500 pt-48 sm:pt-40">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:bg-gradient-to-b dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-all duration-500 pt-[242px] sm:pt-[210px]">
       {/* Northern Lights Background - Only visible in dark mode */}
       <div className="northern-lights dark:opacity-100 opacity-0 transition-opacity duration-500">
         <div className="stars"></div>

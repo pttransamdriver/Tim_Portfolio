@@ -3,22 +3,11 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import ReactMarkdown from 'react-markdown';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light';
-// Only import languages you actually use
-import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
-import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
-import solidity from 'react-syntax-highlighter/dist/esm/languages/prism/solidity';
-import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
-import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import SEO from './SEO';
-
-// Register only the languages you use
-SyntaxHighlighter.registerLanguage('javascript', javascript);
-SyntaxHighlighter.registerLanguage('typescript', typescript);
-SyntaxHighlighter.registerLanguage('solidity', solidity);
-SyntaxHighlighter.registerLanguage('python', python);
-SyntaxHighlighter.registerLanguage('bash', bash);
+import CostSavingsChart from './charts/CostSavingsChart';
+import HoursSavingsChart from './charts/HoursSavingsChart';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -174,18 +163,39 @@ const BlogPost: React.FC = () => {
               code({ node, inline, className, children, ...props }: any) {
                 const match = /language-(\w+)/.exec(className || '');
                 return !inline && match ? (
-                  <SyntaxHighlighter
-                    style={tomorrow as any}
-                    language={match[1]}
-                    PreTag="div"
-                  >
-                    {String(children).replace(/\n$/, '')}
-                  </SyntaxHighlighter>
+                  <div className="my-6 rounded-lg overflow-hidden shadow-lg">
+                    <SyntaxHighlighter
+                      style={vscDarkPlus}
+                      language={match[1]}
+                      PreTag="div"
+                      showLineNumbers={true}
+                      customStyle={{
+                        margin: 0,
+                        borderRadius: '0.5rem',
+                        fontSize: '0.9rem',
+                        padding: '1.5rem',
+                      }}
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  </div>
                 ) : (
-                  <code className={`${className} bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-1 py-0.5 rounded text-sm`} {...props}>
+                  <code className={`${className} bg-gray-100 dark:bg-gray-800 text-blue-600 dark:text-blue-400 px-1.5 py-0.5 rounded text-sm font-mono`} {...props}>
                     {children}
                   </code>
                 );
+              },
+              // Custom component for rendering charts
+              p({ node, children, ...props }: any) {
+                // Check if paragraph contains only a chart component marker
+                const text = typeof children === 'string' ? children : '';
+                if (text === '[CostSavingsChart]') {
+                  return <CostSavingsChart />;
+                }
+                if (text === '[HoursSavingsChart]') {
+                  return <HoursSavingsChart />;
+                }
+                return <p {...props}>{children}</p>;
               },
             }}
           >
