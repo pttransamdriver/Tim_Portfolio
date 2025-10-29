@@ -7,6 +7,18 @@ npm install
 echo "Building project..."
 npm run build
 
-echo "Build complete!"
-echo "Upload the contents of the 'dist' folder to your Hostinger public_html directory."
-echo "Make sure to also upload the .htaccess file for proper routing."
+echo "Copying .htaccess to dist folder..."
+cp .htaccess dist/.htaccess
+
+echo ""
+echo "✅ Build complete!"
+echo ""
+echo "📁 Your production files are in the 'dist/' folder"
+echo "📤 Upload ALL contents of 'dist/' to your Hostinger public_html directory:"
+echo "   - index.html"
+echo "   - .htaccess (CRITICAL for routing!)"
+echo "   - assets/"
+echo "   - content/"
+echo "   - media/"
+echo ""
+echo "🚀 Your site will be live at your Hostinger domain"

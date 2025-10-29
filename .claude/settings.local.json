@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:timillguth.com)"
+      "WebFetch(domain:timillguth.com)",
+      "Read(//home/tillguth/Documents/VScode/x402/examples/typescript/**)"
     ],
     "deny": [],
     "ask": []

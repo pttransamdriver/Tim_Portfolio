@@ -91,6 +91,19 @@ export const blogPosts: BlogPost[] = [
     readTime: 18,
     tags: ['AI', 'Agentic Coding', 'VS Code', 'Developer Tools', 'Productivity', 'Claude Code', 'AmazonQ', 'Augment Code'],
     featured: true,
-    image: 'https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/media/major_productivity.png',
+  },
+  {
+    id: '7',
+    title: 'Integrating x402 Payments: How AI Agents and APIs Finally Got a Payment Layer',
+    slug: 'integrating-x402-payments',
+    excerpt: 'Learn how x402 enables true micropayments for APIs using Ethereum L2s and ERC-3009 gasless signatures. No subscriptions, no API keys—just instant, programmable payments perfect for AI agents and machine-to-machine commerce.',
+    contentFile: 'integrating-x402-payments.md',
+    author: 'Tim Illguth',
+    publishDate: '2025-10-29',
+    readTime: 25,
+    tags: ['x402', 'Payments', 'HTTP 402', 'Micropayments', 'Blockchain', 'AI Agents', 'Ethereum', 'API Monetization', 'Base', 'USDC'],
+    featured: true,
+    image: 'https://images.pexels.com/photos/6771985/pexels-photo-6771985.jpeg?auto=compress&cs=tinysrgb&w=800',
   }
 ];
