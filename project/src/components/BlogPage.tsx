@@ -105,11 +105,9 @@ const BlogPage: React.FC = () => {
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post) => (
-            <article
-              key={post.id}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300 overflow-hidden hover:scale-105"
-            >
-              {post.image && (
+            <Link key={post.id} to={`/${post.slug}`} className="block">
+              <article className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-900/50 transition-all duration-300 overflow-hidden hover:scale-105 cursor-pointer">
+                {post.image && (
                 <div className="relative overflow-hidden">
                   <img
                     src={post.image}
@@ -139,9 +137,7 @@ const BlogPage: React.FC = () => {
                 </div>
                 
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <Link to={`/${post.slug}`}>
-                    {post.title}
-                  </Link>
+                  {post.title}
                 </h2>
                 
                 <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
@@ -160,14 +156,12 @@ const BlogPage: React.FC = () => {
                   ))}
                 </div>
                 
-                <Link
-                  to={`/${post.slug}`}
-                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
-                >
+                <span className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
                   Read more →
-                </Link>
+                </span>
               </div>
             </article>
+            </Link>
           ))}
         </div>
 

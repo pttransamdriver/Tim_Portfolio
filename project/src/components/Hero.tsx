@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="animate-fade-in-up">
           {/* Profile Picture Section */}
-          <div className="mb-8">
+          <div className="mb-8 mt-8 sm:mt-4 lg:mt-0">
             <div className="relative inline-block">
               <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-400 via-purple-500 to-green-400 p-1 profile-picture-glow">
                 {/* Replace the div below with <img src="/path/to/your/profile.jpg" alt="Tim Illguth" className="w-full h-full rounded-full object-cover" /> */}

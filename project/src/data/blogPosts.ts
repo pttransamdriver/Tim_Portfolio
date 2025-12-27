@@ -20,10 +20,10 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Exploring how AI tools are creating a new divide in software development between those who understand the fundamentals and those who rely purely on AI assistance.',
     author: 'Tim Illguth',
     publishDate: '2024-03-15',
-    readTime: 8,
+    readTime: 3,
     tags: ['AI', 'Development', 'Productivity', 'Software Engineering'],
     featured: true,
-    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/media/handshake.png',
     content: `
 # Vibe Coding vs Knowledgeable Developers: The AI Productivity Divide
 
@@ -92,7 +92,7 @@ The question isn't whether to use AI in development - it's how to use it respons
     readTime: 12,
     tags: ['Blockchain', 'Concurrency', 'Thread Safety', 'Smart Contracts'],
     featured: true,
-    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/media/uniswap.png',
     content: `
 # Thoughts on Thread-Safe Blockchain Development
 
@@ -255,7 +255,7 @@ The key is to never assume single-threaded execution and always design with conc
     readTime: 10,
     tags: ['Blockchain', 'Best Practices', 'Smart Contracts', 'DeFi'],
     featured: false,
-    image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/media/NFT_Patents.png',
     content: `
 # Blockchain Development Principles
 
@@ -435,7 +435,7 @@ Remember: in blockchain development, the cost of mistakes is high, but the poten
     readTime: 5,
     tags: ['New Tag', 'Another Tag'],
     featured: false,
-    image: 'https://images.pexels.com/photos/IMAGE_ID/pexels-photo-IMAGE_ID.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/media/Clouds.png',
     content: `
 # Your New Blog Post Title
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -8,9 +8,11 @@ import Projects from './components/Projects';
 import Tutorials from './components/Tutorials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import TutorialsPage from './components/TutorialsPage';
-import BlogPage from './components/BlogPage';
-import BlogPost from './components/BlogPost';
+
+// Lazy load components that aren't needed immediately
+const TutorialsPage = React.lazy(() => import('./components/TutorialsPage'));
+const BlogPage = React.lazy(() => import('./components/BlogPage'));
+const BlogPost = React.lazy(() => import('./components/BlogPost'));
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -48,19 +50,27 @@ function App() {
     </div>
   );
 
+  const LoadingSpinner = () => (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+    </div>
+  );
+
   return (
     <HelmetProvider>
       <ThemeProvider>
         <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/tutorials" element={<TutorialsPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/vibe-coding-vs-knowledgeable-developers-the-ai-productivity-divide" element={<BlogPost />} />
-          <Route path="/thoughts-on-thread-safe-blockchain-development" element={<BlogPost />} />
-          <Route path="/blockchain-development-principles" element={<BlogPost />} />
-          <Route path="/:slug" element={<BlogPost />} />
-        </Routes>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/tutorials" element={<TutorialsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/vibe-coding-vs-knowledgeable-developers-the-ai-productivity-divide" element={<BlogPost />} />
+              <Route path="/thoughts-on-thread-safe-blockchain-development" element={<BlogPost />} />
+              <Route path="/blockchain-development-principles" element={<BlogPost />} />
+              <Route path="/:slug" element={<BlogPost />} />
+            </Routes>
+          </Suspense>
         </Router>
       </ThemeProvider>
     </HelmetProvider>
